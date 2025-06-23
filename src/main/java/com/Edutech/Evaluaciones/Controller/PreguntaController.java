@@ -54,11 +54,8 @@ public class PreguntaController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarPregunta(@PathVariable int id){
-        if (preguntaService.eliminarPregunta(id)){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        preguntaService.eliminarPregunta(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}/validar/{respuesta}")

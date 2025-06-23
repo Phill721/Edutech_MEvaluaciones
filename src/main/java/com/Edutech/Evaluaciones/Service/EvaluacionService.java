@@ -1,5 +1,6 @@
 package com.Edutech.Evaluaciones.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,10 @@ public class EvaluacionService {
 
     public Evaluacion crearEvaluacion(Evaluacion evaluacion){
         return evaluacionRepository.save(evaluacion);
+    }
+
+    public List<Evaluacion> listar(){
+        return evaluacionRepository.findAll();
     }
 
     public Optional<Evaluacion> buscarporID(int id){
@@ -37,11 +42,7 @@ public class EvaluacionService {
         });
     }
 
-    public boolean eliminarEvaluacion(int id){
-        if(evaluacionRepository.existsById(id)){
-            evaluacionRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
+    public void eliminarEvaluacion(int id){
+        evaluacionRepository.deleteById(id);
+}
 }

@@ -53,10 +53,7 @@ public class EvaluacionController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarEvaluacion(@PathVariable int id){
-        if(evaluacionService.eliminarEvaluacion(id)){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        evaluacionService.eliminarEvaluacion(id);
+        return ResponseEntity.noContent().build();
     }
 }
