@@ -54,7 +54,8 @@ public class EvaluacionControllerTest {
 
         mockMvc.perform(get("/api/evaluaciones"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].titulo").value(ev1.getTitulo()));
+                .andExpect(jsonPath("$._embedded.evaluacionList[0].titulo").value(ev1.getTitulo()))
+                .andExpect(jsonPath("$._embedded.evaluacionList[1].titulo").value(ev2.getTitulo()));
     }
 
     @Test

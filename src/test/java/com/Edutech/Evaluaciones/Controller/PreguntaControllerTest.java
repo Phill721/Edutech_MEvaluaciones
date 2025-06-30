@@ -46,11 +46,11 @@ public class PreguntaControllerTest {
 
         mockMvc.perform(get("/api/preguntas"))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(2))
-            .andExpect(jsonPath("$[0].id").value(1))
-            .andExpect(jsonPath("$[0].enunciado").value("ASD"))
-            .andExpect(jsonPath("$[1].id").value(2))
-            .andExpect(jsonPath("$[1].enunciado").value("ASDF"));
+            .andExpect(jsonPath("$._embedded.preguntaList.length()").value(2))
+            .andExpect(jsonPath("$._embedded.preguntaList[0].id").value(1))
+            .andExpect(jsonPath("$._embedded.preguntaList[0].enunciado").value("ASD"))
+            .andExpect(jsonPath("$._embedded.preguntaList[1].id").value(2))
+            .andExpect(jsonPath("$._embedded.preguntaList[1].enunciado").value("ASDF"));
     }
 
     @Test
