@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Edutech.Evaluaciones.Model.Pregunta;
-import com.Edutech.Evaluaciones.Repository.PreguntaRepository;
 import com.Edutech.Evaluaciones.Service.PreguntaService;
 
 @RestController
@@ -24,8 +23,6 @@ public class PreguntaController {
     @Autowired
     private PreguntaService preguntaService;
 
-    @Autowired
-    private PreguntaRepository preguntaRepository;
 
     @PostMapping
     public ResponseEntity<Pregunta> crearPregunta(@RequestBody Pregunta pregunta){
@@ -35,7 +32,7 @@ public class PreguntaController {
 
     @GetMapping
     public List<Pregunta> listaPreguntas(){
-        return preguntaRepository.findAll();
+        return preguntaService.listar();
     }
 
     @GetMapping("/{id}")

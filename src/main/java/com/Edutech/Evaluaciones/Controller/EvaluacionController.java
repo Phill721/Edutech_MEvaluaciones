@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Edutech.Evaluaciones.Model.Evaluacion;
-import com.Edutech.Evaluaciones.Repository.EvaluacionRepository;
 import com.Edutech.Evaluaciones.Service.EvaluacionService;
 
 @RestController
@@ -23,8 +22,6 @@ import com.Edutech.Evaluaciones.Service.EvaluacionService;
 public class EvaluacionController {
     @Autowired
     private EvaluacionService evaluacionService;
-    @Autowired
-    private EvaluacionRepository evaluacionRepository;
 
     @PostMapping
     public ResponseEntity<Evaluacion> crearEvaluacion(@RequestBody Evaluacion evaluacion){
@@ -34,7 +31,7 @@ public class EvaluacionController {
 
     @GetMapping
     public List<Evaluacion> listarEvaluaciones(){
-        return evaluacionRepository.findAll();
+        return evaluacionService.listar();
     }
 
     @GetMapping("/{id}")
